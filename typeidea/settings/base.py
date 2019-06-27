@@ -27,8 +27,22 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+"""
+INSTALLED_APPS的列表顺序需要格外注意，
+Django是根据这些App的顺序来查找对应资源的
+比如后面会用到static和templates这些模块
+Django会根据顺序挨个去找这些App下查找对应资源，这意味着如果资源路径和名称相同的话，前面的会覆盖掉后面的
+
+因此，如果在开发中有需要覆盖admin模板的需求，可以根据admin模板的路径和名称写一份一模一样的，Django就会加载前面的
+
+不过这并不是覆盖自带模板的最佳方式，因为这是基于对Django的理解，有些隐晦，可能会对后人留坑
+"""
 
 INSTALLED_APPS = [
+    'blog',
+    'config',
+    'comment',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
