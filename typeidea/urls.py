@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from typeidea.custom_site import custom_site
+
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^super_admin/', admin.site.urls),  # 自定义的一套后台，专门管理业务的
+    url(r'^admin/', custom_site.urls),
 ]
